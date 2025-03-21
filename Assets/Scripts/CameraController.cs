@@ -15,9 +15,7 @@ public class CameraController : MonoBehaviour
     // Update is called once per frame
     void Update() {
         camTransform.position = Vector3.Lerp(camTransform.position, translist[current_transform].position, Time.deltaTime * 5);
-        //camTransform.position = translist[current_transform].position;
         camTransform.rotation = Quaternion.Lerp(camTransform.rotation, translist[current_transform].rotation, Time.deltaTime * 5);
-        //camTransform.rotation = translist[current_transform].rotation;
     }
 
     public void MoveRight() {
