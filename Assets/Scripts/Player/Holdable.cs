@@ -2,12 +2,13 @@ using UnityEngine;
 
 public class Holdable : MonoBehaviour
 {
-    private bool selected = false;
-    private Vector3 gotoPos;
-    private Vector3 basePos;
-    private Transform gotoTransform;
+    protected bool selected = false;
+    protected Vector3 gotoPos;
+    protected Vector3 basePos;
+    protected Transform gotoTransform;
     public float selection_pos_modifier = 0.05f;
-    private float active_select_mod;
+    protected float active_select_mod;
+    protected bool isHeld => gotoTransform != null;
 
     void Awake() => basePos = transform.position;
 

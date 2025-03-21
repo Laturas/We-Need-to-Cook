@@ -6,6 +6,7 @@ public class InventoryManager : MonoBehaviour
 {
     public Holdable[] inventoryItems;
     public Transform[] itemHoldPositions;
+    public GameObject[] hold_buttons;
     public Holdable selectedObject;
 
     void Awake() => inventoryItems = new Holdable[4];
@@ -17,10 +18,12 @@ public class InventoryManager : MonoBehaviour
         for (int i = 0; i < inventoryItems.Length; i++) {
             if (inventoryItems[i] != null && inventoryItems[i] == selectedObject) {
                 inventoryItems[i] = null;
+                hold_buttons[i].SetActive(true);
             }
         }
         inventoryItems[hold_pos] = selectedObject;
         selectedObject.transform.SetParent(itemHoldPositions[hold_pos]);
+        hold_buttons[hold_pos].SetActive(false);
         selectedObject = null;
     }
 
