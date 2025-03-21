@@ -14,6 +14,11 @@ public class InventoryManager : MonoBehaviour
         if (selectedObject == null) {return;}
         selectedObject.GoTo(itemHoldPositions[hold_pos]);
         selectedObject.Deselect();
+        for (int i = 0; i < inventoryItems.Length; i++) {
+            if (inventoryItems[i] != null && inventoryItems[i] == selectedObject) {
+                inventoryItems[i] = null;
+            }
+        }
         inventoryItems[hold_pos] = selectedObject;
         selectedObject.transform.SetParent(itemHoldPositions[hold_pos]);
         selectedObject = null;
