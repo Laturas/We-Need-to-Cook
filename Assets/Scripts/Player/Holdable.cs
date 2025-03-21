@@ -12,9 +12,10 @@ public class Holdable : MonoBehaviour
     void Awake() => basePos = transform.position;
 
     public void Update() {
-        if (gotoTransform == null) {
-            gotoPos = basePos + new Vector3(0f, active_select_mod, 0f);
+        if (gotoTransform != null) {
+            basePos = gotoTransform.position;
         }
+        gotoPos = basePos + new Vector3(0f, active_select_mod, 0f);
         transform.position = Vector3.Lerp(transform.position, gotoPos, Time.deltaTime * 5f);
     }
 
@@ -35,6 +36,7 @@ public class Holdable : MonoBehaviour
     * Item should lerp to the hold 
     */
     public void GoTo(Transform position) {
+        basePos = position.position;
         gotoTransform = position;
     }
 }
