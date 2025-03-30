@@ -5,12 +5,12 @@ public class LiquidRenderer : MonoBehaviour
 {
 void Start() {
 		//generate_strip();
-		generate_cylinder();
-        generate_circle();
+		//generate_cylinder();
+        //generate_circle();
 		//foreach (Vector3 vert in verts) {
 		//	Instantiate(debug_sphere, vert, Quaternion.identity);
 		//}
-		Generate();
+		//Generate();
 	}
 	public int segments = 5;
 	public float topPos = 3f;

@@ -9,15 +9,20 @@ public class Holdable : MonoBehaviour
     public float selection_pos_modifier = 0.05f;
     protected float active_select_mod;
     protected bool isHeld => gotoTransform != null;
+    protected Rigidbody rb;
 
     void Awake() => basePos = transform.position;
+    void Start() => rb = GetComponent<Rigidbody>();
 
     public void Update() {
-        if (gotoTransform != null) {
-            basePos = gotoTransform.position;
+        if (isHeld || selected) {
+            if (gotoTransform != null) {
+                basePos = gotoTransform.position;
+            }
+            gotoPos = basePos + new Vector3(0f, active_select_mod, 0f);
+            transform.position = Vector3.Lerp(transform.position, gotoPos, Time.deltaTime * 5f);
         }
-        gotoPos = basePos + new Vector3(0f, active_select_mod, 0f);
-        transform.position = Vector3.Lerp(transform.position, gotoPos, Time.deltaTime * 5f);
+        rb.isKinematic = isHeld || selected;
     }
 
     /**

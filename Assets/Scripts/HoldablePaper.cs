@@ -7,6 +7,7 @@ public class HoldablePaper : Holdable
 {
     // Update is called once per frame
     public new void Update() {
+        rb.isKinematic = isHeld || selected;
         if (gotoTransform != null) {
             basePos = gotoTransform.position;
         }
