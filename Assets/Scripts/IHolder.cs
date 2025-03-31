@@ -8,5 +8,6 @@ public interface IHolder
     * Returns the transform of this object and subscribes the holdable object to this
     */
     bool SubscribeObject(Holdable holdable);
-    void UnsubscribeObject(Holdable holdable);
+    Holdable UnsubscribeObject();
+    Transform getTransform();
 }

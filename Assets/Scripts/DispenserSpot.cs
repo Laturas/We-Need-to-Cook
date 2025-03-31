@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class DispenserSpot : MonoBehaviour, IHolder
@@ -10,15 +8,27 @@ public class DispenserSpot : MonoBehaviour, IHolder
         return heldObject;
     }
 
+    public Transform getTransform()
+    {
+        return transform;
+    }
+
     public bool SubscribeObject(Holdable holdable)
     {
-        if ()
+        if (holdable == null) {
+            return false;
+        }
+        if (heldObject != null) {
+            return false;
+        }
         heldObject = holdable;
         return true;
     }
 
-    public void UnsubscribeObject(Holdable holdable)
+    public Holdable UnsubscribeObject()
     {
-        throw new System.NotImplementedException();
+        Holdable cp = heldObject;
+        heldObject = null;
+        return cp;
     }
 }
