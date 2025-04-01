@@ -75,9 +75,13 @@ public class InventoryManager : MonoBehaviour
 								hold_buttons[i].SetActive(true);
 							}
 						}
-						selectedObject?.GoTo(holderPos.getTransform());
+						if (selectedObject != null) {
+							selectedObject.GoTo(holderPos.getTransform());
+							holderPos.SubscribeObject(selectedObject);
+						}
 						selectedObject = old;
 						old?.Select();
+						moveSelectedTo(movTo);
 					}
 				}
 			}	

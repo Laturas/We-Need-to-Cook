@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class DispenserSpot : MonoBehaviour, IHolder
 {
-    Holdable heldObject;
+    [SerializeField] Holdable heldObject;
     public Holdable getSubscribedObject()
     {
         return heldObject;
